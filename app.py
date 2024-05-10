@@ -121,28 +121,8 @@ if st.button('Give me the latest news!'):
             article_titles.append(article_title)
             article_bodies.append(article_body.get_text(strip=True))
         df = pd.DataFrame({'article url': chess_urls, 'title': article_titles, 'article': article_bodies})
-        st.dataframe(data=df,width=1000000)    
+        st.dataframe(data=df,width=1000000) 
 
-###################################
-#Summarization
-###################################
-# Model Load
-# from transformers import MT5ForConditionalGeneration, MT5Tokenizer
-# model_name = "google/mt5-small"
-# tokenizer = MT5Tokenizer.from_pretrained(model_name)
-# model = MT5ForConditionalGeneration.from_pretrained(model_name)
-
-# def generate_summary(text):
-#     input_text = "summarize: " + text
-#     input_ids = tokenizer.encode(input_text, return_tensors="pt")
-
-#     output = model.generate(input_ids, max_length=150, num_beams=4, early_stopping=True)
-#     summary = tokenizer.decode(output[0], skip_special_tokens=True)
-#     return summary
-    
-# if st.button("Summarize"):
-#     summary = generate_summary(df['article'][0])
-#     st.write(summary)
 
 
 if st.button('Summarize'):
@@ -157,5 +137,3 @@ if st.button('Summarize'):
         for sentence in result_dict["summarize_result"]:
             st.write(sentence)
         
-
-
