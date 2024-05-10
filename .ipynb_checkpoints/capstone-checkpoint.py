@@ -3,6 +3,7 @@ import pandas as pd
 import requests
 import re
 from bs4 import BeautifulSoup
+import transformers
 from pysummarization.nlpbase.auto_abstractor import AutoAbstractor
 from pysummarization.tokenizabledoc.simple_tokenizer import SimpleTokenizer
 from pysummarization.abstractabledoc.top_n_rank_abstractor import TopNRankAbstractor
