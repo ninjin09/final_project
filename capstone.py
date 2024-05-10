@@ -69,7 +69,7 @@ if st.button('Give me the latest news!'):
             response = requests.get("https://sports.yahoo.com/nfl/news/")
         elif sports_option == 'MLB':
             response = requests.get("https://sports.yahoo.com/mlb/news/")
-        soup = BeautifulSoup(response.content)
+        soup = BeautifulSoup(response.content,features="html.parser)
         sports_links = soup.find_all("li",{"class":"stream-item js-stream-content Bgc(t) Pos(r) Mb(24px)"})
         for link in sports_links:
             time = link.find("time").get_text(strip=True)
@@ -82,7 +82,7 @@ if st.button('Give me the latest news!'):
         article_bodies = []
         for url in sports_urls:
             response = requests.get(url)
-            soup = BeautifulSoup(response.content)
+            soup = BeautifulSoup(response.content,features="html.parser)
             article_title = soup.find('h1').get_text(strip=True)
             article_paragraphs = soup.find_all('p')
             body = ""
@@ -99,7 +99,7 @@ if st.button('Give me the latest news!'):
 #################################      
 
     elif option == 'Chess':
-        response = requests.get("https://www.chess.com/news")
+        response = requests.get("https://www.chess.com/news",features="html.parser)
         soup = BeautifulSoup(response.content)
         chess_links = soup.find_all("a",{"class":"post-preview-title"})
         for link in chess_links[:10]:
