@@ -3,4 +3,5 @@ requests
 bs4
 transformers
 torch
+pysummarization
 sentencepiece
