@@ -15,7 +15,7 @@ ikon_urls = []
 sports_urls = []
 chess_urls = []
 
-df = pd.read_csv('nba_sample.csv')
+df = pd.read_csv('nba-sample.csv')
 ###############################
 st.title("Get the Latest News Based on Your Interests")
 
