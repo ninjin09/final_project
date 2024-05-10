@@ -2,6 +2,6 @@ pandas
 requests
 bs4
 transformers
-pytorch
-fastai[all]
+torch
+fastai
 sentencepiece
