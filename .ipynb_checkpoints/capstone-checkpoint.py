@@ -143,17 +143,18 @@ if st.button('Give me the latest news!'):
 #     summary = generate_summary(df['article'][0])
 #     st.write(summary)
 
-    if st.button('Summarize'):
-        for text in df['article']:
-            auto_abstractor = AutoAbstractor()
-            auto_abstractor.tokenizable_doc = SimpleTokenizer()
-            auto_abstractor.delimiter_list = [".", "\n"]
-            abstractable_doc = TopNRankAbstractor()
-            
-            result_dict = auto_abstractor.summarize(text, abstractable_doc)
+
+if st.button('Summarize'):
+    for text in df['article']:
+        auto_abstractor = AutoAbstractor()
+        auto_abstractor.tokenizable_doc = SimpleTokenizer()
+        auto_abstractor.delimiter_list = [".", "\n"]
+        abstractable_doc = TopNRankAbstractor()
         
-            for sentence in result_dict["summarize_result"]:
-                st.write(sentence)
-            
+        result_dict = auto_abstractor.summarize(text, abstractable_doc)
+    
+        for sentence in result_dict["summarize_result"]:
+            st.write(sentence)
+        
 
 
