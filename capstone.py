@@ -44,7 +44,7 @@ if st.button('Give me the latest news!'):
         article_bodies = []
         for url in full_ikon_urls:
             response = requests.get(url)
-            soup = BeautifulSoup(response.content)
+            soup = BeautifulSoup(response.content,features="html.parser")
             article_title = soup.find('h1').get_text(strip=True)
             article_paragraphs = soup.find_all('p')
             body = ""
@@ -82,7 +82,7 @@ if st.button('Give me the latest news!'):
         article_bodies = []
         for url in sports_urls:
             response = requests.get(url)
-            soup = BeautifulSoup(response.content,features="html.parser)
+            soup = BeautifulSoup(response.content,features="html.parser")
             article_title = soup.find('h1').get_text(strip=True)
             article_paragraphs = soup.find_all('p')
             body = ""
@@ -99,8 +99,8 @@ if st.button('Give me the latest news!'):
 #################################      
 
     elif option == 'Chess':
-        response = requests.get("https://www.chess.com/news",features="html.parser)
-        soup = BeautifulSoup(response.content)
+        response = requests.get("https://www.chess.com/news")
+        soup = BeautifulSoup(response.content,features="html.parser")
         chess_links = soup.find_all("a",{"class":"post-preview-title"})
         for link in chess_links[:10]:
             chess_url = link.get('href')
@@ -110,7 +110,7 @@ if st.button('Give me the latest news!'):
         article_bodies = []
         for url in chess_urls:
             response = requests.get(url)
-            soup = BeautifulSoup(response.content)
+            soup = BeautifulSoup(response.content,features="html.parser")
             article_title = soup.find('h1').get_text(strip=True)
             article_body = soup.find('div',{"class":"post-view-content"})
             article_titles.append(article_title)
