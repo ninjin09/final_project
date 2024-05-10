@@ -17,9 +17,9 @@ chess_urls = []
 
 df = pd.read_csv('nba-sample.csv')
 ###############################
-st.title("Get the Latest News Based on Your Interests")
+st.title("Get the Latest News")
 
-option = st.selectbox("What would you like to read about?", site_options)
+option = st.selectbox("What are you interested in?", site_options)
 if option == 'Ikon articles':
     ikon_option = st.selectbox("Choose a topic", ('All latest','Politics','Economy'))
 elif option == 'Sports':
