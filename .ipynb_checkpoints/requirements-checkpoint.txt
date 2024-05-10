@@ -1,5 +1,5 @@
 pandas
 requests
 bs4
-transformers[torch]
+transformers
 sentencepiece
