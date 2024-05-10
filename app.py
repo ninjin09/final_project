@@ -126,7 +126,7 @@ if st.button('Give me the latest news!'):
 
 
 if st.button('Summarize'):
-    for index, row in df.iterrows():
+    for index, row in data.iterrows():
         auto_abstractor = AutoAbstractor()
         auto_abstractor.tokenizable_doc = SimpleTokenizer()
         auto_abstractor.delimiter_list = [".", "\n"]
