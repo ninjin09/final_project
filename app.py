@@ -124,7 +124,7 @@ if st.button('Give me the latest news!'):
         df = pd.DataFrame({'article url': chess_urls, 'title': article_titles, 'article': article_bodies})
         st.dataframe(data=df,width=1000000) 
 
-
+df = pd.read_csv('sports.csv')
 if st.button('Summarize'):
     for index, row in df.iterrows():
         auto_abstractor = AutoAbstractor()
