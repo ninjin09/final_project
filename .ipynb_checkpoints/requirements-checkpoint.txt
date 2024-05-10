@@ -2,4 +2,6 @@ pandas
 requests
 bs4
 transformers
+pytorch
+fastai[all]
 sentencepiece
