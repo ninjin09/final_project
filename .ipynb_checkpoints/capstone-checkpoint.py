@@ -10,7 +10,7 @@ sports_urls = []
 chess_urls = []
 
 ###############################
-st.title("Get the Latest News!")
+st.title("Get the Latest News Based on Your Interests")
 
 option = st.selectbox("What would you like to read about?", site_options)
 if option == 'Ikon articles':
