@@ -132,8 +132,8 @@ if st.button('Summarize'):
         auto_abstractor.delimiter_list = [".", "\n"]
         abstractable_doc = TopNRankAbstractor()
         
+        text = row['article']
         result_dict = auto_abstractor.summarize(text, abstractable_doc)
     
         for sentence in result_dict["summarize_result"]:
             st.write(sentence)
-        
