@@ -69,7 +69,7 @@ if st.button('Give me the latest news!'):
             response = requests.get("https://sports.yahoo.com/nfl/news/")
         elif sports_option == 'MLB':
             response = requests.get("https://sports.yahoo.com/mlb/news/")
-        soup = BeautifulSoup(response.content,features="html.parser)
+        soup = BeautifulSoup(response.content,features="html.parser")
         sports_links = soup.find_all("li",{"class":"stream-item js-stream-content Bgc(t) Pos(r) Mb(24px)"})
         for link in sports_links:
             time = link.find("time").get_text(strip=True)
