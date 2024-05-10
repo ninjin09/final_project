@@ -15,7 +15,7 @@ ikon_urls = []
 sports_urls = []
 chess_urls = []
 
-df = pd.read_csv('sports.csv')
+df = pd.read_csv('nba_sample.csv')
 ###############################
 st.title("Get the Latest News Based on Your Interests")
 
@@ -38,6 +38,7 @@ if st.button('Give me the latest news!'):
             response = requests.get("https://ikon.mn/l/2")
         soup = BeautifulSoup(response.content)
         ikon_links = soup.find_all("div",{"class":"nlitem"})
+        
         for link in ikon_links:
             if "Өчигдөр" not in link:
                 ikon_a = link.find("a")
@@ -62,18 +63,6 @@ if st.button('Give me the latest news!'):
             article_bodies.append(body)
         df = pd.DataFrame({'title': article_titles, 'article': article_bodies,'article url': full_ikon_urls,})
         st.dataframe(data=df,width=1000000)
-        # if st.button('Summarize'):
-        #     for text in df['article']:
-        #         auto_abstractor = AutoAbstractor()
-        #         auto_abstractor.tokenizable_doc = SimpleTokenizer()
-        #         auto_abstractor.delimiter_list = [".", "\n"]
-        #         abstractable_doc = TopNRankAbstractor()
-                
-        #         result_dict = auto_abstractor.summarize(text, abstractable_doc)
-            
-        #         for sentence in result_dict["summarize_result"]:
-        #             st.write(sentence)
-                
 
 #################################
 #Yahoo Sports
@@ -112,17 +101,7 @@ if st.button('Give me the latest news!'):
             article_bodies.append(body)
         df = pd.DataFrame({'title': article_titles, 'article': article_bodies,'article url': sports_urls})
         st.dataframe(data=df,width=1000000)      
-    # if st.button('Summarize'):
-    #     for text in df['article']:
-    #         auto_abstractor = AutoAbstractor()
-    #         auto_abstractor.tokenizable_doc = SimpleTokenizer()
-    #         auto_abstractor.delimiter_list = [".", "\n"]
-    #         abstractable_doc = TopNRankAbstractor()
-            
-    #         result_dict = auto_abstractor.summarize(text, abstractable_doc)
-        
-    #         for sentence in result_dict["summarize_result"]:
-    #             st.write(sentence)
+ 
 #################################
 #Chess
 #################################      
@@ -146,14 +125,17 @@ if st.button('Give me the latest news!'):
             article_bodies.append(article_body.get_text(strip=True))
         df = pd.DataFrame({'article url': chess_urls, 'title': article_titles, 'article': article_bodies})
         st.dataframe(data=df,width=1000000) 
+
+####################################
+#Summarization
+####################################
+
     if st.button('Summarize'):
         for text in df['article']:
             auto_abstractor = AutoAbstractor()
             auto_abstractor.tokenizable_doc = SimpleTokenizer()
             auto_abstractor.delimiter_list = [".", "\n"]
             abstractable_doc = TopNRankAbstractor()
-            
             result_dict = auto_abstractor.summarize(text, abstractable_doc)
-        
             for sentence in result_dict["summarize_result"]:
                 st.write(sentence)
