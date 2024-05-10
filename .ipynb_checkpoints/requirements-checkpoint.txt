@@ -2,6 +2,6 @@ pandas
 requests
 bs4
 transformers
-torch
 pysummarization
 sentencepiece
+scikit-learn

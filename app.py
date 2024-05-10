@@ -4,6 +4,8 @@ import requests
 import re
 from bs4 import BeautifulSoup
 import transformers
+import sklearn
+from transformers import pipeline
 from pysummarization.nlpbase.auto_abstractor import AutoAbstractor
 from pysummarization.tokenizabledoc.simple_tokenizer import SimpleTokenizer
 from pysummarization.abstractabledoc.top_n_rank_abstractor import TopNRankAbstractor
