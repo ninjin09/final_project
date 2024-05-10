@@ -3,5 +3,4 @@ requests
 bs4
 transformers
 torch
-fastai
 sentencepiece
